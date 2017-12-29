@@ -31,7 +31,6 @@ public:
     KDevelop::Path::List includeDirectories(KDevelop::ProjectBaseItem*) const override;
     KDevelop::Path::List frameworkDirectories(KDevelop::ProjectBaseItem*) const override;
     QHash<QString,QString> defines(KDevelop::ProjectBaseItem*) const override;
-    QString extraArguments(KDevelop::ProjectBaseItem* item) const override;
     KDevelop::ProjectTargetItem* createTarget(const QString& target, KDevelop::ProjectFolderItem *parent) override;
     bool addFilesToTarget(const QList<KDevelop::ProjectFileItem*> &files, KDevelop::ProjectTargetItem *parent) override;
     bool removeTarget(KDevelop::ProjectTargetItem *target) override;

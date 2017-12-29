@@ -73,15 +73,15 @@ QString DeclarationNavigationContext::html(bool shorten)
   AbstractNavigationContext::html(shorten);
   modifyHtml()  += "<html><body><p>" + fontSizePrefix(shorten);
 
-  addExternalHtml(prefix());
+  addExternalHtml(m_prefix);
 
   if(!declaration().data()) {
     modifyHtml() += i18n("<br /> lost declaration <br />");
     return currentHtml();
   }
   
-  if( previousContext() ) {
-    QString link = createLink( previousContext()->name(), previousContext()->name(), NavigationAction(previousContext()) );
+  if( m_previousContext ) {
+    QString link = createLink( m_previousContext->name(), m_previousContext->name(), NavigationAction(m_previousContext) );
     modifyHtml() += navigationHighlight(i18n("Back to %1<br />", link));
   }
   
@@ -291,7 +291,7 @@ QString DeclarationNavigationContext::html(bool shorten)
   
     //modifyHtml() += "<br />";
 
-  addExternalHtml(suffix());
+  addExternalHtml(m_suffix);
 
   modifyHtml() += fontSizeSuffix(shorten) + "</p></body></html>";
 

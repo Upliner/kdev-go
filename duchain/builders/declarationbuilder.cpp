@@ -274,7 +274,7 @@ void DeclarationBuilder::visitMethodDeclaration(go::MethodDeclarationAst* node)
         injectContext(toBeInjectedContext);
 
         auto range = RangeInRevision(currentContext()->range().start, currentContext()->range().start);
-        functionDeclaration = openDeclaration<go::GoFunctionDeclaration>(identifierForNode(node->methodName).last(), range);
+        functionDeclaration = openDeclaration<go::GoFunctionDeclaration>(identifierForNode(node->methodName), range);
         functionDeclaration->setAutoDeclaration(true);
         closeDeclaration();
 
@@ -308,7 +308,7 @@ void DeclarationBuilder::visitMethodDeclaration(go::MethodDeclarationAst* node)
         DUChainWriteLocker n;
         functionDefinition->setDeclaration(functionDeclaration);
         auto methodReceiverName = node->methodRecv->nameOrType;
-        Declaration* thisVariable = openDeclaration<Declaration>(identifierForNode(methodReceiverName).last(),
+        Declaration* thisVariable = openDeclaration<Declaration>(identifierForNode(methodReceiverName),
                                                                  editorFindRange(methodReceiverName, 0));
         thisVariable->setAbstractType(lastType());
         closeDeclaration();

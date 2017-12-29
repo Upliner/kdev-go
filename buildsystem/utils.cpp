@@ -13,8 +13,8 @@
 #include <kconfiggroup.h>
 #include <project/projectmodel.h>
 #include <interfaces/icore.h>
-#include <interfaces/iruntimecontroller.h>
-#include <interfaces/iruntime.h>
+//#include <interfaces/iruntimecontroller.h>
+//#include <interfaces/iruntime.h>
 #include <interfaces/iplugincontroller.h>
 
 using namespace KDevelop;

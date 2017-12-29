@@ -59,7 +59,8 @@ void Job::postProcessStdout(const QStringList& lines)
     foreach (const QString & line, lines) {
         match = problemRegex.match(line);
         if (match.hasMatch()) {
-            KDevelop::IProblem::Ptr problem(new KDevelop::DetectedProblem(i18n("Go Meta Linter")));
+            KDevelop::IProblem::Ptr problem(new KDevelop::DetectedProblem());
+            problem->setDescription(i18n("Go Meta Linter"));
             if(match.captured(4) == QStringLiteral("warning"))
             {
                 problem->setSeverity(KDevelop::IProblem::Warning);

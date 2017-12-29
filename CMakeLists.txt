@@ -19,8 +19,9 @@ find_package(KF5 ${KF5_DEP_VERSION} REQUIRED COMPONENTS
     ThreadWeaver
     TextEditor
     I18n
+    ItemModels
 )
-set(KDEVPLATFORM_DEP_VERSION "5.2.40")
+set(KDEVPLATFORM_DEP_VERSION "5.1.2")
 find_package(KDevPlatform ${KDEVPLATFORM_DEP_VERSION} CONFIG)
 set_package_properties(KDevPlatform PROPERTIES
     TYPE REQUIRED

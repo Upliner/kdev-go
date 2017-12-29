@@ -100,9 +100,6 @@ void ProblemModel::reset(KDevelop::IProject* project, const QString& path)
 
     clearProblems();
     m_problems.clear();
-
-    QString tooltip = i18nc("@info:tooltip", "Re-Run Last Go Meta Linter Analysis");
-    setFullUpdateTooltip(tooltip);
 }
 
 void ProblemModel::show()

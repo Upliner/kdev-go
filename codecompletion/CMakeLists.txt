@@ -20,5 +20,3 @@ target_link_libraries(kdevgocompletion LINK_PRIVATE
 )
 
 install(TARGETS kdevgocompletion DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
-
-add_subdirectory(tests)

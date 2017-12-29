@@ -146,9 +146,9 @@ void Plugin::result(KJob*)
     updateActions();
 }
 
-KDevelop::ContextMenuExtension Plugin::contextMenuExtension(KDevelop::Context* context, QWidget* parent)
+KDevelop::ContextMenuExtension Plugin::contextMenuExtension(KDevelop::Context* context)
 {
-    KDevelop::ContextMenuExtension extension = KDevelop::IPlugin::contextMenuExtension(context, parent);
+    KDevelop::ContextMenuExtension extension = KDevelop::IPlugin::contextMenuExtension(context);
 
     if (context->hasType(KDevelop::Context::EditorContext) && m_currentProject && !isRunning()) {
         auto eContext = dynamic_cast<KDevelop::EditorContext*>(context);
@@ -156,8 +156,8 @@ KDevelop::ContextMenuExtension Plugin::contextMenuExtension(KDevelop::Context* c
         const auto mime = db.mimeTypeForUrl(eContext->url());
 
         if (mime.name() == QLatin1String("text/x-go")) {
-            extension.addAction(KDevelop::ContextMenuExtension::AnalyzeFileGroup, m_contextActionFile);
-            extension.addAction(KDevelop::ContextMenuExtension::AnalyzeProjectGroup, m_contextActionProject);
+            extension.addAction(KDevelop::ContextMenuExtension::AnalyzeGroup, m_contextActionFile);
+            extension.addAction(KDevelop::ContextMenuExtension::AnalyzeGroup, m_contextActionProject);
         }
     }
 
@@ -184,7 +184,7 @@ KDevelop::ContextMenuExtension Plugin::contextMenuExtension(KDevelop::Context* c
             run(item->project(), item->path().toLocalFile());
         });
 
-        extension.addAction(KDevelop::ContextMenuExtension::AnalyzeProjectGroup, m_contextActionProjectItem);
+        extension.addAction(KDevelop::ContextMenuExtension::AnalyzeGroup, m_contextActionProjectItem);
     }
 
     return extension;

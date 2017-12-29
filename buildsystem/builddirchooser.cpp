@@ -15,8 +15,8 @@
 
 #include <project/helper.h>
 #include <interfaces/icore.h>
-#include <interfaces/iruntime.h>
-#include <interfaces/iruntimecontroller.h>
+//#include <interfaces/iruntime.h>
+//#include <interfaces/iruntimecontroller.h>
 #include <KLocalizedString>
 #include <QDialogButtonBox>
 #include <QVBoxLayout>

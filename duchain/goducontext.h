@@ -50,7 +50,7 @@ public:
                                             const QString& htmlPrefix, const QString& htmlSuffix, const KDevelop::AbstractNavigationWidget::DisplayHints hints) const override;
 
     enum {
-        Identity = BaseContext::Identity + 51
+        Identity = BaseContext::Identity + 52
     };
   
 };

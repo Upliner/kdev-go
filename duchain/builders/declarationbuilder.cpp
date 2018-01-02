@@ -290,7 +290,15 @@ void DeclarationBuilder::visitMethodDeclaration(go::MethodDeclarationAst* node)
     openContext(node, editorFindRange(node, 0), DUContext::ContextType::Class, typeIdentifier);
     DUChainWriteLocker lock;
     auto functionDefinition = buildMethod(node->signature, node->body, node->methodName, functionDeclaration, m_session->commentBeforeToken(node->startToken-1), identifier);
-    functionDeclaration->setType<go::GoFunctionType>(functionDefinition->type<go::GoFunctionType>());
+    auto typ = functionDefinition->type<go::GoFunctionType>();
+    //qCCritical(DUCHAIN) << typ.data()->toString();
+    auto typCast = static_cast<KDevelop::AbstractType*>(typ.data());
+    if (typCast != nullptr) {
+       auto absType = AbstractType::Ptr(typCast);
+       functionDeclaration->setAbstractType(absType);
+    } else {
+        qCCritical(DUCHAIN) << typ.data()->toString();
+	}
     functionDeclaration->setKind(Declaration::Instance);
     lock.unlock();
 
